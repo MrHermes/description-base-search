@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Description Base Search</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body * {
+        display: block;
+      }
+
+      form {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      textarea {
+        resize: vertical;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="/" method="post">
+      <label for="description">Description</label>
+      <textarea type="text" name="description" id="description" rows="3">
+{{ request.form['description'] }}</textarea
+      >
+
+      <label for="limit">Limit</label>
+      <input
+        type="number"
+        name="limit"
+        id="limit"
+        value="{{ request.form['limit'] }}"
+      />
+
+      <input type="submit" value="Search" />
+      {% if result %}
+      <label for="result">Result</label>
+      <textarea readonly rows="10">{{ result }}</textarea>
+      {% endif %}
+    </form>
+  </body>
+</html>
